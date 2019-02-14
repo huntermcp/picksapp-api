@@ -1,0 +1,17 @@
+service: mock-sports-bets
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  stage: dev
+  region: us-east-1
+
+plugins:
+  - serverless-offline
+
+functions:
+  sportsAPI:
+    handler: index.handler
+    events:
+      - http: ANY /
+      - http: 'ANY {proxy+}'
